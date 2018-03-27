@@ -6,13 +6,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
-public class MainActivity extends AppCompatActivity{
+import com.example.orkhan.nexeber.Adapters.ViewPagerAdapter;
+
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setUpToolbarAndComponents();
+    }
+
+    private void setUpToolbarAndComponents() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -22,5 +28,6 @@ public class MainActivity extends AppCompatActivity{
 
         TabLayout tabLayout = findViewById(R.id.tabLayout_id);
         tabLayout.setupWithViewPager(viewPager);
+        setTitle("");
     }
 }

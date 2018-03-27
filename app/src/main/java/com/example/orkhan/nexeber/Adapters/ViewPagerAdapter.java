@@ -1,4 +1,4 @@
-package com.example.orkhan.nexeber;
+package com.example.orkhan.nexeber.Adapters;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
@@ -9,6 +9,7 @@ import com.example.orkhan.nexeber.Fragments.FragmentAllLanguages;
 import com.example.orkhan.nexeber.Fragments.FragmentAzerbaijani;
 import com.example.orkhan.nexeber.Fragments.FragmentEnglish;
 import com.example.orkhan.nexeber.Fragments.FragmentRussian;
+import com.example.orkhan.nexeber.R;
 
 /**
  * Created by Orkhan on 3/23/2018.
@@ -26,7 +27,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        switch (position){
+        switch (position) {
             case 0:
                 return new FragmentAllLanguages();
             case 1:
@@ -47,7 +48,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        switch (position){
+        switch (position) {
             case 0:
                 return mContext.getString(R.string.all_languages);
             case 1:

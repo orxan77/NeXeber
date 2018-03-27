@@ -5,4 +5,5 @@
     <string name="azerbaijani_lang">Azeri</string>
     <string name="english_lang">English</string>
     <string name="russian_lang">Russian</string>
+    <string name="error_occurred">Error occurred, please try again. </string>
 </resources>
