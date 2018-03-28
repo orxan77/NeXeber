@@ -1,6 +1,8 @@
 package com.example.orkhan.nexeber.Utils;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 
 import com.example.orkhan.nexeber.News;
 
@@ -9,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
+
 
 /**
  * Created by Orkhan on 3/23/2018.
@@ -39,6 +42,13 @@ public class NetworkUtils {
                     currentNews.getInt("service_id")
             ));
         }
+    }
+
+    public boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) mContext.getSystemService(mContext.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
 }

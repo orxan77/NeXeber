@@ -1,21 +1,27 @@
 package com.example.orkhan.nexeber;
 
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 import com.example.orkhan.nexeber.Adapters.ViewPagerAdapter;
+import com.example.orkhan.nexeber.Fragments.FragmentAllLanguages;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         setUpToolbarAndComponents();
+
     }
 
     private void setUpToolbarAndComponents() {
@@ -23,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         ViewPagerAdapter pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), getApplicationContext());
-        ViewPager viewPager = findViewById(R.id.viewPager_id);
+        CustomViewPager viewPager = findViewById(R.id.viewPager_id);
+        viewPager.setPagingEnabled(false);
         viewPager.setAdapter(pagerAdapter);
 
         TabLayout tabLayout = findViewById(R.id.tabLayout_id);

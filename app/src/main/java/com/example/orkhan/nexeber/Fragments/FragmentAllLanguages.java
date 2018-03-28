@@ -13,7 +13,6 @@ import android.widget.AbsListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -28,7 +27,6 @@ import com.example.orkhan.nexeber.Utils.NetworkUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +38,7 @@ import static android.content.ContentValues.TAG;
 
 public class FragmentAllLanguages extends Fragment {
 
-    private static final String LOG_TAG = FragmentAllLanguages.class.getSimpleName();
+    public static final String LOG_TAG = FragmentAllLanguages.class.getSimpleName();
 
     private RecyclerView mRecyclerView;
     private NewsAdapter mNewsAdapter;
@@ -50,6 +48,7 @@ public class FragmentAllLanguages extends Fragment {
     private ProgressBar mBottomProgressBar;
     private NetworkUtils mNetworkUtils;
     private TextView mErrorTextView;
+    private TextView mNetworkErrorTextview;
     private LinearLayoutManager mLinearLayoutManager;
 
     public FragmentAllLanguages() {
@@ -59,23 +58,6 @@ public class FragmentAllLanguages extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.all_languages_fragment, container, false);
-
-//        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-//            @Override
-//            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-//                super.onScrollStateChanged(recyclerView, newState);
-//
-//                if (!recyclerView.canScrollVertically(1)){
-//                    Log.e(TAG, "onScrollStateChanged: reached end" );
-//                    fetchData(NetworkUtils.URL_ALL_NEWS + "&page=" + pageNumber++);
-//                }
-//            }
-//
-//            @Override
-//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-//                super.onScrolled(recyclerView, dx, dy);
-//            }
-//        });
         mNetworkUtils = new NetworkUtils(getContext());
         mNewsList = new ArrayList<>();
         mRequest = Volley.newRequestQueue(getContext());
@@ -93,6 +75,7 @@ public class FragmentAllLanguages extends Fragment {
         mProgressBar = view.findViewById(R.id.progressbar);
         mBottomProgressBar = view.findViewById(R.id.bottom_progressbar);
         mErrorTextView = view.findViewById(R.id.error_textview);
+        mNetworkErrorTextview = view.findViewById(R.id.error_network_textview);
         initAndSetUpRecyclerView(view);
 
     }
@@ -135,7 +118,11 @@ public class FragmentAllLanguages extends Fragment {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e(LOG_TAG, "Error occurred");
-                        showErrorMessage();
+                        if (!mNetworkUtils.isOnline()) {
+                            showNetworkError();
+                        } else {
+                            showErrorMessage();
+                        }
                     }
                 }
         );
@@ -146,6 +133,12 @@ public class FragmentAllLanguages extends Fragment {
     private void showErrorMessage() {
         mProgressBar.setVisibility(View.INVISIBLE);
         mErrorTextView.setVisibility(View.VISIBLE);
+        mNetworkErrorTextview.setVisibility(View.INVISIBLE);
+    }
+
+    private void showNetworkError(){
+        mNetworkErrorTextview.setVisibility(View.VISIBLE);
+        mProgressBar.setVisibility(View.INVISIBLE);
     }
 
 
