@@ -1,4 +1,4 @@
-package com.example.orkhan.nexeber;
+package com.example.orkhan.nexeber.Models;
 
 /**
  * Created by Orkhan on 3/23/2018.
@@ -43,6 +43,10 @@ public class News {
 
     public String getImageUrl() {
         return mImageUrl;
+    }
+
+    public int getWebsiteId() {
+        return mServiceId;
     }
 
 }

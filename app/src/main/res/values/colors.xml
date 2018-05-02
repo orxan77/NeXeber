@@ -6,4 +6,7 @@
     <color name="colorBackgroundListItem">#BDBDBD</color>
     <color name="tab_background_unselected">#424242</color>
     <color name="tab_background_selected">#000000</color>
+    <color name="black">#000000</color>
+    <color name="pressed_color">@android:color/holo_red_dark</color>
+    <color name="default_color">#ffffff</color>
 </resources>

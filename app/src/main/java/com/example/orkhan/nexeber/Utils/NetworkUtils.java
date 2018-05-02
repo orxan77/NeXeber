@@ -4,7 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.example.orkhan.nexeber.News;
+import com.example.orkhan.nexeber.Models.News;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,15 +19,24 @@ import java.util.List;
 
 public class NetworkUtils {
 
-    public static final String BASE_URL = "http://www.nexeber.com/api";
-    public static final String URL_ALL_NEWS = BASE_URL + "/news?lang=az";
+    private static final String BASE_URL = "http://www.nexeber.com/api";
+    public static final String URL_NEWS = BASE_URL + "/news";
+    public static final String URL_ENGLISH_NEWS = URL_NEWS + "?lang=en";
+    public static final String URL_AZERBAIJANI_NEWS = URL_NEWS + "?lang=az";
+    public static final String URL_RUSSIAN_NEWS = URL_NEWS + "?lang=ru";
+    public static final String URL_ALL_SERVICES = BASE_URL + "/services";
+    public static final String URL_AZERBAIJANI_SERVICES = URL_ALL_SERVICES + "?lang=az";
+    public static final String URL_ENGLISH_SERVICES = URL_ALL_SERVICES + "?lang=en";
+    public static final String URL_RUSSIAN_SERVICES = URL_ALL_SERVICES + "?lang=ru";
+    public static final String URL_ALL_NEWS = BASE_URL + "/news";
+
     private Context mContext;
 
     public NetworkUtils(Context context) {
         this.mContext = context;
     }
 
-    public void parseJSON(List<News> newsList, JSONObject jsonObject) throws JSONException {
+    public void parseNewsJSON(List<News> newsList, JSONObject jsonObject) throws JSONException {
         JSONArray newses = jsonObject.getJSONArray("data");
 
         for (int i = 0; i < newses.length(); i++) {

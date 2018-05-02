@@ -17,6 +17,7 @@ import com.example.orkhan.nexeber.R;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
+    private static final String TAG = ViewPagerAdapter.class.getSimpleName();
     private static final int NUMBER_OF_FRAGMENTS = 4;
     private Context mContext;
 

@@ -1,45 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_frame"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.orkhan.nexeber.MainActivity">
+    android:layout_height="match_parent">
 
-    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/toolbar"
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:elevation="5dp"
-        android:gravity="center"
-        android:minHeight="?attr/actionBarSize"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_logo" />
+        <LinearLayout
+            android:id="@+id/linear_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context="com.example.orkhan.nexeber.MainActivity">
 
-    </android.support.v7.widget.Toolbar>
+            <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tabLayout_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabBackground="@drawable/tab_selected_color"
-        app:tabGravity="fill"
-        app:tabIndicatorColor="@android:color/holo_red_dark"
-        app:tabMode="fixed"
-        app:tabSelectedTextColor="@android:color/white"
-        app:tabTextColor="@android:color/white" />
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_logo" />
 
-    <com.example.orkhan.nexeber.CustomViewPager
-        android:id="@+id/viewPager_id"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+            </android.support.v7.widget.Toolbar>
 
-</LinearLayout>
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabLayout_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabBackground="@drawable/tab_selected_color"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@android:color/holo_red_dark"
+                app:tabMode="fixed"
+                app:tabSelectedTextColor="@android:color/white"
+                app:tabTextColor="@android:color/white" />
+
+            <com.example.orkhan.nexeber.CustomViewPager
+                android:id="@+id/viewPager_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/left_drawer"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@android:color/black"
+            android:choiceMode="multipleChoice" />
+
+    </android.support.v4.widget.DrawerLayout>
+</FrameLayout>

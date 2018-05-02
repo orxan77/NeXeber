@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">NeXeber</string>
-
     <string name="all_languages">All</string>
     <string name="azerbaijani_lang">Azeri</string>
     <string name="english_lang">English</string>
     <string name="russian_lang">Russian</string>
     <string name="error_occurred">Error occurred, please try again. </string>
     <string name="network_error_occurred">No internet connection </string>
+    <string name="search_title">Search Orxan</string>
 </resources>
